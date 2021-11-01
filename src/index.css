@@ -66,3 +66,12 @@ ol, ul {
 .game-info button:hover {
   background: #e7ebf9;
 }
+
+.game .sort-button {
+  border: 1px solid #023e8a;
+  padding: 6px 12px;
+  margin: 0 6px;
+  color: #023e8a;
+  background: #FFF;
+  cursor: pointer;
+}

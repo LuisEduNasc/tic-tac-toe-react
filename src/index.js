@@ -143,7 +143,7 @@ class Game extends React.Component {
           <ol>{moves}</ol>
         </div>
         <div>
-          <button onClick={this.sortMoves}>
+          <button className="sort-button" onClick={this.sortMoves}>
             sort moves {this.state.sorted ? 'descending' : 'ascending'}
           </button>
         </div>
