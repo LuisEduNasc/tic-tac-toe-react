@@ -48,3 +48,21 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.game-info button {
+  border: 1px solid #023e8a;
+  padding: 6px 12px;
+  margin: 6px;
+  color: #023e8a;
+  background: #FFF;
+  cursor: pointer;
+}
+
+.game-info li:last-child button {
+  font-weight: bold;
+  border: 2px solid #023e8a;
+}
+
+.game-info button:hover {
+  background: #caf0f8;
+}
