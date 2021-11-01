@@ -52,7 +52,10 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      sorted: false,
     }
+
+    this.sortMoves = this.sortMoves.bind(this);
   }
 
   handleClick(i) {
@@ -84,9 +87,18 @@ class Game extends React.Component {
     });
   }
 
+  sortMoves() {
+    const newHistory = this.state.history;
+    newHistory.reverse();
+    this.setState(prevState => ({
+      history: newHistory,
+      sorted: !prevState.sorted,
+    }));
+  }
+
   render() {
     const history = this.state.history;
-    const current = history[this.state.stepNumber];
+    const current = this.state.sorted ? history[0] : history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     const coondinates = [
       [0, 0],
@@ -101,11 +113,11 @@ class Game extends React.Component {
     ];
 
     const moves = history.map((step, move) => {
-      const desc = move ?
+      const desc = step.squareIdxs.length ?
         'Go to move #' + move + ' position ' + coondinates[step.squareIdxs[step.squareIdxs?.length - 1]] :
         'Go to game start';
       return (
-        <li key={move}>
+        <li key={move} data-move={step.squareIdxs.length} className={step.squareIdxs.length === history.length - 1 ? 'last-one' : ''}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
@@ -129,6 +141,11 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
+        </div>
+        <div>
+          <button onClick={this.sortMoves}>
+            sort moves {this.state.sorted ? 'descending' : 'ascending'}
+          </button>
         </div>
       </div>
     );

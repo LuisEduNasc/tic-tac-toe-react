@@ -58,11 +58,11 @@ ol, ul {
   cursor: pointer;
 }
 
-.game-info li:last-child button {
+.game-info li.last-one button {
   font-weight: bold;
   border: 2px solid #023e8a;
 }
 
 .game-info button:hover {
-  background: #caf0f8;
+  background: #e7ebf9;
 }
